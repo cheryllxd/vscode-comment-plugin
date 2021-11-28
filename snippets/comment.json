@@ -1,0 +1,14 @@
+{
+	"jscomments": {
+		"scope": "javascript,typescript",
+		"prefix": "jscomment",
+		"body": [
+      "/**",
+			" * @desc $1",
+			" * @author 卢小丹/80234823",
+      " * @date $CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE",
+      " */"
+		],
+		"description": "jscomment"
+	}
+}

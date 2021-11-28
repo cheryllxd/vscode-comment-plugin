@@ -1,0 +1,117 @@
+{
+  "name": "vscode-comment-plugin",
+  "displayName": "vscode-comment-plugin",
+  "description": "a comment template for js ts and vue",
+  "version": "1.0.1",
+  "publisher": "luxiaodan",
+  "engines": {
+    "vscode": "^1.62.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*",
+    "onLanguage:javascript",
+    "onLanguage:vue",
+    "onLanguage:typescript",
+    "onCommand:extension.createNewComment",
+    "onCommand:extension.createRevisionComment"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "comments-plugin",
+      "properties": {
+        "comments.author": {
+          "type": "string",
+          "default": "author",
+          "description": "author"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "extension.createNewComment",
+        "title": "新注释"
+      },
+      {
+        "command": "extension.createRevisionComment",
+        "title": "修订注释"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.createNewComment",
+        "key": "alt+c",
+        "mac": "alt+c",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "extension.createRevisionComment",
+        "key": "alt+r",
+        "mac": "alt+r",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "comment",
+          "group": "z_commands"
+        }
+      ],
+      "comment": [
+        {
+          "command": "extension.createRevisionComment",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.createNewComment",
+          "group": "navigation"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "comment",
+        "label": "注释"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/comment.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.62.0",
+    "@types/glob": "^7.1.4",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "14.x",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint": "^8.1.0",
+    "glob": "^7.1.7",
+    "mocha": "^9.1.3",
+    "typescript": "^4.4.4",
+    "@vscode/test-electron": "^1.6.2"
+  },
+  "dependencies": {
+    "moment": "^2.29.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cheryllxd/vscode-comment-plugin.git"
+  }
+}
